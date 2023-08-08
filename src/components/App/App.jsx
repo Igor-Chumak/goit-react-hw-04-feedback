@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from 'utilities/localStorage';
+import {
   Header,
   Section,
   CreateThemeSwitcher,
@@ -91,11 +95,3 @@ export const App = () => {
     </ThemeProvider>
   );
 };
-
-function loadFromLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
-
-function saveToLocalStorage(key, value) {
-  return localStorage.setItem(key, JSON.stringify(value));
-}
