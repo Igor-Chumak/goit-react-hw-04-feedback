@@ -1,0 +1,23 @@
+[
+  {
+    "nameId": "good",
+    "value": 0,
+    "buttonName": "Good",
+    "btnColor": "white",
+    "btnBgColor": "green"
+  },
+  {
+    "nameId": "neutral",
+    "value": 0,
+    "buttonName": "Neutral",
+    "btnColor": "black",
+    "btnBgColor": "yellow"
+  },
+  {
+    "nameId": "bad",
+    "value": 0,
+    "buttonName": "Bad",
+    "btnColor": "white",
+    "btnBgColor": "red"
+  }
+]
