@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import {
@@ -24,12 +24,14 @@ export const App = () => {
   const [feedBack, setFeedBack] = useState(stateDefault);
   const [modeTheme, setModeTheme] = useState(modeThemeInit);
 
+  useEffect(() => {
+    saveToLocalStorage(localStorageTheme, modeTheme);
+  }, [modeTheme]);
+
   const handleToggleTheme = () => {
     setModeTheme(prevModeTheme =>
       prevModeTheme === 'light' ? 'dark' : 'light'
     );
-    console.log('modeTheme :>> ', modeTheme);
-    saveToLocalStorage(localStorageTheme, modeTheme);
   };
 
   const onLeaveFeedback = e => {
