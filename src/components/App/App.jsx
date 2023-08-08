@@ -9,20 +9,27 @@ import {
   Statistics,
   Notification,
 } from 'components';
+// import data about types and numbers of feedbacks
 import typeFeedbacks from 'data/type_feedback.json';
 // import typeFeedbacks from 'data/type_feedback_2.json';
 
+const localStorageKey = 'feedback';
+const localStorageTheme = localStorageKey + '_theme';
 const stateDefault = {};
 typeFeedbacks.map(({ nameId, value }) => (stateDefault[nameId] = value));
+const modeThemeInit =
+  loadFromLocalStorage(localStorageTheme) === 'dark' ? 'dark' : 'light';
 
 export const App = () => {
   const [feedBack, setFeedBack] = useState(stateDefault);
-  const [modeTheme, setModeTheme] = useState('light');
+  const [modeTheme, setModeTheme] = useState(modeThemeInit);
 
   const handleToggleTheme = () => {
     setModeTheme(prevModeTheme =>
       prevModeTheme === 'light' ? 'dark' : 'light'
     );
+    console.log('modeTheme :>> ', modeTheme);
+    saveToLocalStorage(localStorageTheme, modeTheme);
   };
 
   const onLeaveFeedback = e => {
@@ -82,3 +89,11 @@ export const App = () => {
     </ThemeProvider>
   );
 };
+
+function loadFromLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+function saveToLocalStorage(key, value) {
+  return localStorage.setItem(key, JSON.stringify(value));
+}
