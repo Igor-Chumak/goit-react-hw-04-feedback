@@ -57,7 +57,7 @@ export const App = () => {
       <Header>
         <CreateThemeSwitcher
           handleToggleTheme={handleToggleTheme}
-          modeTheme={modeTheme === 'light' ? false : true}
+          modeThemeSwitch={modeTheme === 'light' ? true : false}
         />
       </Header>
       <main>
