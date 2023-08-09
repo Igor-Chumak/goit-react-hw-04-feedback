@@ -16,13 +16,14 @@ import {
 // import data about types and numbers of feedbacks
 import typeFeedbacks from 'data/type_feedback.json';
 // import typeFeedbacks from 'data/type_feedback_2.json';
-
-const localStorageKey = 'feedback';
-const localStorageTheme = localStorageKey + '_theme';
 const stateDefault = {};
 typeFeedbacks.map(({ nameId, value }) => (stateDefault[nameId] = value));
+// for theme
+const localStorageKey = 'feedback';
+const localStorageTheme = localStorageKey + '_theme';
 const modeThemeInit =
   loadFromLocalStorage(localStorageTheme) === 'dark' ? 'dark' : 'light';
+//
 
 export const App = () => {
   const [feedBack, setFeedBack] = useState(stateDefault);
