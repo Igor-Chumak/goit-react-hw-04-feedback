@@ -11,7 +11,7 @@ export const ButtonList = ({ options, onLeaveFeedback }) => {
             name={nameId}
             style={{ color: btnColor, backgroundColor: btnBgColor }}
             key={nameId}
-            onClick={e => onLeaveFeedback(e.currentTarget.name)}
+            onClick={() => onLeaveFeedback(nameId)}
           >
             {buttonName}
           </Button>
