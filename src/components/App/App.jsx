@@ -39,8 +39,7 @@ export const App = () => {
     );
   };
 
-  const onLeaveFeedback = e => {
-    let stateKey = e.currentTarget.name;
+  const onLeaveFeedback = (stateKey) => {
     setFeedBack(prevState => {
       return { ...feedBack, ...{ [stateKey]: prevState[stateKey] + 1 } };
     });
