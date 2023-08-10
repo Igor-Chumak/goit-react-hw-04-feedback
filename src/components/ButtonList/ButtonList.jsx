@@ -2,10 +2,6 @@ import PropTypes from 'prop-types';
 import { ButtonBox, Button } from './ButtonList.styled';
 
 export const ButtonList = ({ options, onLeaveFeedback }) => {
-  const handleOnClick = e => {
-    return onLeaveFeedback(e.currentTarget.name);
-  };
-
   return (
     <div>
       <ButtonBox>
@@ -15,7 +11,7 @@ export const ButtonList = ({ options, onLeaveFeedback }) => {
             name={nameId}
             style={{ color: btnColor, backgroundColor: btnBgColor }}
             key={nameId}
-            onClick={handleOnClick}
+            onClick={e => onLeaveFeedback(e.currentTarget.name)}
           >
             {buttonName}
           </Button>
