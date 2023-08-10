@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
+import { useLocalStorage } from 'react-recipes';
 import {
   loadFromLocalStorage,
-  saveToLocalStorage,
+  //   saveToLocalStorage,
 } from 'utilities/localStorage';
 import {
   Header,
@@ -27,11 +28,15 @@ const modeThemeInit =
 
 export const App = () => {
   const [feedBack, setFeedBack] = useState(stateDefault);
-  const [modeTheme, setModeTheme] = useState(modeThemeInit);
+  // const [modeTheme, setModeTheme] = useState(modeThemeInit);
 
-  useEffect(() => {
-    saveToLocalStorage(localStorageTheme, modeTheme);
-  }, [modeTheme]);
+  const [modeTheme, setModeTheme] = useLocalStorage(
+    localStorageTheme,
+    modeThemeInit
+  );
+  // useEffect(() => {
+  //   saveToLocalStorage(localStorageTheme, modeTheme);
+  // }, [modeTheme]);
 
   const handleToggleTheme = () => {
     setModeTheme(prevModeTheme =>
