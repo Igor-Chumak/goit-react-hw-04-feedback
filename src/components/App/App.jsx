@@ -40,7 +40,6 @@ export const App = () => {
   };
 
   const onLeaveFeedback = stateKey => {
-    console.log('stateKey :>> ', stateKey);
     setFeedBack(prevState => {
       return { ...feedBack, ...{ [stateKey]: prevState[stateKey] + 1 } };
     });
