@@ -3,10 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import { useLocalStorage } from 'react-recipes';
 import {
-  loadFromLocalStorage,
-  saveToLocalStorage,
-} from 'utilities/localStorage';
-import {
   Header,
   Section,
   CreateThemeSwitcher,
@@ -22,22 +18,10 @@ typeFeedbacks.map(({ nameId, value }) => (stateDefault[nameId] = value));
 // for theme
 const localStorageKey = 'feedback';
 const localStorageTheme = localStorageKey + '_theme';
-const modeThemeInit =
-  loadFromLocalStorage(localStorageTheme) === 'dark' ? 'dark' : 'light';
-saveToLocalStorage(localStorageTheme, modeThemeInit);
-//
 
 export const App = () => {
   const [feedBack, setFeedBack] = useState(stateDefault);
-  // const [modeTheme, setModeTheme] = useState(modeThemeInit);
-
-  const [modeTheme, setModeTheme] = useLocalStorage(
-    localStorageTheme,
-    modeThemeInit
-  );
-  // useEffect(() => {
-  //   saveToLocalStorage(localStorageTheme, modeTheme);
-  // }, [modeTheme]);
+  const [modeTheme, setModeTheme] = useLocalStorage(localStorageTheme);
 
   const handleToggleTheme = () => {
     setModeTheme(prevModeTheme =>
@@ -69,14 +53,14 @@ export const App = () => {
     <ThemeProvider
       theme={{
         ...theme,
-        ...(modeTheme === 'light' ? lightTheme : darkTheme),
+        ...(modeTheme === 'dark' ? darkTheme : lightTheme),
       }}
     >
       <GlobalStyles />
       <Header>
         <CreateThemeSwitcher
           handleToggleTheme={handleToggleTheme}
-          modeThemeSwitch={modeTheme === 'light' ? true : false}
+          modeThemeSwitch={modeTheme === 'dark' ? true : false}
         />
       </Header>
       <main>
