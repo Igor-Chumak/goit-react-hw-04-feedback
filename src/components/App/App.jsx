@@ -25,7 +25,7 @@ export const App = () => {
 
   const handleToggleTheme = () => {
     setModeTheme(prevModeTheme =>
-      prevModeTheme === 'light' ? 'dark' : 'light'
+      prevModeTheme === 'dark' ? 'light' : 'dark'
     );
   };
 

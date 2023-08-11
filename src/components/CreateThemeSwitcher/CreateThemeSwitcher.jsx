@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import style from './CreateThemeSwitcher.module.css';
 
 export const CreateThemeSwitcher = ({ handleToggleTheme, modeThemeSwitch }) => {
+  console.log('modeThemeSwitch :>> ', modeThemeSwitch);
   return (
     <div className={style.switchBox}>
       {/* <span className={style.themeName}>Night</span> */}
@@ -9,7 +10,7 @@ export const CreateThemeSwitcher = ({ handleToggleTheme, modeThemeSwitch }) => {
         <input
           type="checkbox"
           onChange={handleToggleTheme}
-          checked={modeThemeSwitch}
+          checked={!modeThemeSwitch}
         />
         <span className={style.slider}></span>
       </label>
