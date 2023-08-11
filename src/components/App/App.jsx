@@ -4,7 +4,7 @@ import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import { useLocalStorage } from 'react-recipes';
 import {
   loadFromLocalStorage,
-  //   saveToLocalStorage,
+  saveToLocalStorage,
 } from 'utilities/localStorage';
 import {
   Header,
@@ -24,6 +24,7 @@ const localStorageKey = 'feedback';
 const localStorageTheme = localStorageKey + '_theme';
 const modeThemeInit =
   loadFromLocalStorage(localStorageTheme) === 'dark' ? 'dark' : 'light';
+saveToLocalStorage(localStorageTheme, modeThemeInit);
 //
 
 export const App = () => {
